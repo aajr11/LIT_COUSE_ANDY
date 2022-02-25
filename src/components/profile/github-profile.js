@@ -18,7 +18,7 @@ class GithubProfile extends LitElement {
         }
 
         .centered {
-          width:100%;
+          width: 100%;
           display: flex;
           justify-content: center;
         }
@@ -33,12 +33,12 @@ class GithubProfile extends LitElement {
           border: 1px solid grey;
           margin: 3px;
           width: 15rem;
-          font-weight:bold;
+          font-weight: bold;
         }
 
         .titulo {
-            display:block;
-            font-weight:bold; 
+          display: block;
+          font-weight: bold;
         }
 
         .alert-succesfull {
@@ -53,9 +53,9 @@ class GithubProfile extends LitElement {
           color: black;
           padding: 10px;
         }
-        .primario{
-          background-color:#0663fd;
-          color:white;
+        .primario {
+          background-color: #0663fd;
+          color: white;
         }
 
         @media (min-width: 768px) {
@@ -83,7 +83,6 @@ class GithubProfile extends LitElement {
     this.data = {};
   }
 
-
   async onSubmit(e) {
     this.setLoader(true, 'reset');
     this.data = {};
@@ -97,25 +96,18 @@ class GithubProfile extends LitElement {
       return false;
     }
 
-    return await getUserData(username.value).then(_data => {
-      if (_data.error === "") {
+    return getUserData(username.value).then((_data) => {
+      if (_data.error === '') {
         this.validated = false;
         this.message = 'El usuario no existe';
         this.setLoader(false);
-        resolve(false);
       }
       this.validated = true;
       this.message = '';
       this.data = _data;
       this.setLoader(false);
-      this.dispatchEvent(new Event('buscarUser')); 
-      resolve(true);
-      
+      this.dispatchEvent(new Event('buscarUser'));
     });
-
-    
-
-
   }
 
   setLoader(state, reset = null) {
@@ -130,7 +122,7 @@ class GithubProfile extends LitElement {
       <form onsubmit="return false">
         <label for="username" class="titulo">Github Profile</label>
         <input id="username" type="text" class="form-field" placeholder="user name" />
-        <input type="submit" @click="${this.onSubmit}" class="sd-btn primario" value="Buscar"/>
+        <input type="submit" @click="${this.onSubmit}" class="sd-btn primario" value="Buscar" />
         ${this.validated && this.message === '' ? html`<div class="alert-succesfull">&#128077;</div>` : nothing}
       </form>
       ${this.message !== '' ? html`<div class="alert-msg">${this.message}</div>` : nothing}

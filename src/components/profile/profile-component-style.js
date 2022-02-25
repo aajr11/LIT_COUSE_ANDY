@@ -120,8 +120,7 @@ export const profileComponentStyle = css`
     background-color: #f1f1f1;
   }
 
-
-  .photo-redondo{
+  .photo-redondo {
     border-radius: 50%;
     width: 14rem;
     margin: 10px 0px;
@@ -130,24 +129,24 @@ export const profileComponentStyle = css`
     border-width: 2px;
   }
 
-  .mini-redondo{
+  .mini-redondo {
     width: 2rem;
     position: relative;
     margin-top: -76px;
     float: right;
   }
 
-  .nickname{
+  .nickname {
     font-size: 20px;
     font-weight: bold;
   }
 
-  .login{
+  .login {
     color: #5f5f5f;
     font-size: 16px;
   }
 
-  .editar{
+  .editar {
     width: 14rem;
     height: 25px;
     padding: 0;
@@ -162,13 +161,13 @@ export const profileComponentStyle = css`
     cursor: pointer;
   }
 
-  .bio{
+  .bio {
     margin-top: 10px;
     font-size: 13px;
     font-weight: bold;
   }
 
-  .fllw{
+  .fllw {
     color: #5f5f5f;
     font-size: 12px;
     margin: 10px 0px;
@@ -179,30 +178,30 @@ export const profileComponentStyle = css`
     height: 1em;
   }
 
-  .company{
+  .company {
     font-size: 12px;
   }
 
-  .location{
+  .location {
     font-size: 12px;
   }
 
-  .email{
-    font-size: 12px;
-  }
-  
-  .blog{
+  .email {
     font-size: 12px;
   }
 
-  .enlace{
+  .blog {
+    font-size: 12px;
+  }
+
+  .enlace {
     text-decoration: none;
     color: black;
   }
 
-  .hover{
-    fill:rgb(28 108 207);
-    color:rgb(28 108 207);
+  .hover {
+    fill: rgb(28 108 207);
+    color: rgb(28 108 207);
     cursor: pointer;
   }
 

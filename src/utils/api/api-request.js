@@ -26,10 +26,9 @@ export const updateItem = async (data) => {
   });
 };
 
-
 export const getUserData = async (username) => {
   return commonFetch(`https://api.github.com/users/${username}`, {
     method: 'GET',
-    headers: { 'Content-Type': 'application/json' }
+    headers: { 'Content-Type': 'application/json' },
   });
 };
