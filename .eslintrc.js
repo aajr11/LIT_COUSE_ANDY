@@ -19,6 +19,6 @@ module.exports = {
     'space-before-function-paren': 0,
     'quote-props': ['error', 'as-needed'],
     'no-unused-expressions': 'off',
-    'prettier/prettier': ['error']
+    //'prettier/prettier': ['error']
   },
 };

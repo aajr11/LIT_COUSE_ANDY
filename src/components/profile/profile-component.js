@@ -1,6 +1,5 @@
 import { LitElement, html } from 'lit-element';
 import { nothing } from 'lit-html';
-import { dateFormatter } from '../../utils/functions';
 import { people, locationgps, workstation, email, enlace } from '../../utils/svg-icons';
 import { profileComponentStyle } from './profile-component-style';
 
@@ -12,7 +11,7 @@ class ProfileComponent extends LitElement {
 
   static get properties() {
     return {
-      data: { type: Object },
+      data: { type: Object,attribute:{} },
       showMore: { type: Boolean },
     };
   }
@@ -24,14 +23,7 @@ class ProfileComponent extends LitElement {
   }
 
   showMoreNews() {
-
-    /*.hoverFollowers:hover{
-      color:blue;
-    }
-
-    .hoverFollowers .svg-icon:hover{
-      fill:blue;
-    }*/
+    
   }
 
   handleHoverFllw() {
@@ -80,7 +72,7 @@ class ProfileComponent extends LitElement {
                 <img class="photo-redondo" src="${this.data.avatar_url}" />
                 <img class="photo-redondo mini-redondo" src="${this.data.avatar_url}" />
               </div>
-              <div class="nickname">${this.data.name ?? "-"}</div>
+              <div class="nickname">${this.data.name?? "-"}</div>
               <div class="login">${this.data.login}</div>
               <div class="bio">${this.data.bio ?? "-"}</div>
               <button @click="${this.showMoreNews}" class="editar">Edit profile</button>

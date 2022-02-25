@@ -4,7 +4,7 @@ import { nothing } from 'lit-html';
 import { valueNotEmpty } from '../../utils/functions';
 import { seedStyle } from '@seed-catalog/styles';
 import '../common-header';
-import { getUserData } from '../../utils/api/api-request'
+import { getUserData } from '../../utils/api/api-request';
 import { spinner } from '../../utils/svg-icons';
 import './profile-component';
 
@@ -83,11 +83,8 @@ class GithubProfile extends LitElement {
     this.data = {};
   }
 
-  passwordValidator(pw) {
-    return pw !== '' && pw.length === 8;
-  }
 
-  onSubmit(e) {
+  async onSubmit(e) {
     this.setLoader(true, 'reset');
     this.data = {};
     this.validated = false;
@@ -100,20 +97,23 @@ class GithubProfile extends LitElement {
       return false;
     }
 
-    getUserData(username.value).then(_data => {
+    return await getUserData(username.value).then(_data => {
       if (_data.error === "") {
         this.validated = false;
         this.message = 'El usuario no existe';
         this.setLoader(false);
-        return false;
+        resolve(false);
       }
       this.validated = true;
       this.message = '';
       this.data = _data;
-      console.log(_data);
       this.setLoader(false);
+      this.dispatchEvent(new Event('buscarUser')); 
+      resolve(true);
+      
+    });
 
-    })
+    
 
 
   }
@@ -123,7 +123,6 @@ class GithubProfile extends LitElement {
     profileComponent.style.display = reset ? 'none' : 'block';
 
     this.showSpinner = state;
-    //profileComponent.showMore = !state;
   }
 
   render() {
@@ -131,7 +130,7 @@ class GithubProfile extends LitElement {
       <form onsubmit="return false">
         <label for="username" class="titulo">Github Profile</label>
         <input id="username" type="text" class="form-field" placeholder="user name" />
-        <input type="submit" @click="${this.onSubmit}" class="sd-btn primario" value="Buscar" />
+        <input type="submit" @click="${this.onSubmit}" class="sd-btn primario" value="Buscar"/>
         ${this.validated && this.message === '' ? html`<div class="alert-succesfull">&#128077;</div>` : nothing}
       </form>
       ${this.message !== '' ? html`<div class="alert-msg">${this.message}</div>` : nothing}
