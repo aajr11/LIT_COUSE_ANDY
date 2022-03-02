@@ -8,7 +8,6 @@ export const profileComponentStyle = css`
     text-align: left;
   }
 
-
   .photo-redondo {
     border-radius: 50%;
     width: 14rem;
@@ -120,6 +119,5 @@ export const profileComponentStyle = css`
     .info-container {
       display: none;
     }
-
   }
 `;

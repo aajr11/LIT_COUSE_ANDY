@@ -1,12 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
 
 class LitModal extends LitElement {
-  static get properties() {
-    return {
-    };
-  }
-
-  static get styles(){
+  static get styles() {
     return css`
       .modal {
         position: fixed;
@@ -22,15 +17,15 @@ class LitModal extends LitElement {
         align-items: center;
         visibility: hidden;
         opacity: 0;
-        transition: visibility .2s, opacity .2s;
-    }
+        transition: visibility 0.2s, opacity 0.2s;
+      }
 
-    .open {
-      visibility: visible;
-      opacity: 1;
-    }
+      .open {
+        visibility: visible;
+        opacity: 1;
+      }
 
-    .content {
+      .content {
         width: 100%;
         height: auto;
         background-color: white;
@@ -40,30 +35,28 @@ class LitModal extends LitElement {
         overflow: hidden;
         margin-top: -50px;
         transition: margin-top 0.5s;
-    }
-
-    .open > .content {
-        margin: 0px;
-    }
-
-    @media (min-width: 800px){
-      .content {
-          width: 50%;
       }
-    }
-    
-    .botoncerrar{
-      float: right;
-      margin-top: -25px;
-      margin-right: -25px;
-      border: 0;
-      background: 0;
-      font-size: larger;
-    }
-    
+
+      .open > .content {
+        margin: 0px;
+      }
+
+      @media (min-width: 800px) {
+        .content {
+          width: 50%;
+        }
+      }
+
+      .botoncerrar {
+        float: right;
+        margin-top: -25px;
+        margin-right: -25px;
+        border: 0;
+        background: 0;
+        font-size: larger;
+      }
     `;
   }
-
 
   constructor() {
     super();
@@ -79,25 +72,19 @@ class LitModal extends LitElement {
     this.dispatchEvent(event);
   }
 
-  closeModal(){
-    const following = this.shadowRoot.querySelector(".modal");
+  closeModal() {
+    const following = this.shadowRoot.querySelector('.modal');
     following.classList.remove('open');
-    
   }
-
 
   render() {
     return html`
       <div class="modal">
         <div class="content">
           <div>
-            <button class="botoncerrar" @click="${this.closeModal}">
-                &times;
-            </button>
+            <button class="botoncerrar" @click="${this.closeModal}">&times;</button>
           </div>
           <slot></slot>
-
-          
         </div>
       </div>
     `;
