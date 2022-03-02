@@ -85,6 +85,7 @@ class GithubProfile extends LitElement {
 
   async onSubmit(e) {
     this.setLoader(true, 'reset');
+    this.firstUpdated();
     this.data = {};
     this.validated = false;
     this.message = '';
@@ -93,7 +94,7 @@ class GithubProfile extends LitElement {
     if (!valueNotEmpty(username.value)) {
       this.message = 'Enter a valid username';
       this.setLoader(false);
-      return false;
+      return false; 
     }
 
     return getUserData(username.value).then((_data) => {
@@ -101,12 +102,17 @@ class GithubProfile extends LitElement {
         this.validated = false;
         this.message = 'El usuario no existe';
         this.setLoader(false);
+        return;
       }
       this.validated = true;
       this.message = '';
       this.data = _data;
       this.setLoader(false);
       this.dispatchEvent(new Event('buscarUser'));
+    }).catch(()=>{
+      this.validated = false;
+      this.message = 'El usuario no existe';
+      this.setLoader(false);
     });
   }
 
@@ -126,7 +132,7 @@ class GithubProfile extends LitElement {
         ${this.validated && this.message === '' ? html`<div class="alert-succesfull">&#128077;</div>` : nothing}
       </form>
       ${this.message !== '' ? html`<div class="alert-msg">${this.message}</div>` : nothing}
-      <profile-component .data="${this.data}"></profile-component>
+      ${this.data !== {} ? html`<profile-component style="text-align: -webkit-center;" .data="${this.data}"></profile-component>`:nothing} 
       ${this.showSpinner ? html`<div class="centered spinner">${spinner}</div>` : nothing}
     `;
   }

@@ -43,6 +43,11 @@ export const navList = [
     name: 'Github Profile',
     path: '/github-profile',
   },
+  ,
+  {
+    name: 'Lit Modal',
+    path: '/modal',
+  },
   /* {
     name: 'List Example',
     path: '/list-example',
