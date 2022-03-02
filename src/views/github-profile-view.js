@@ -1,15 +1,18 @@
-import { LitElement, html,css } from 'lit-element';
+import { LitElement, html, css } from 'lit-element';
 import { commonStyles } from '../utils/custom-styles';
 import '../components/common-header';
 import '../components/profile/github-profile';
 
 class GithubProfileView extends LitElement {
   static get styles() {
-    return [commonStyles,css`
-      github-profile{
-        text-align: -webkit-center;
-      }
-    `];
+    return [
+      commonStyles,
+      css`
+        github-profile {
+          text-align: -webkit-center;
+        }
+      `,
+    ];
   }
 
   render() {

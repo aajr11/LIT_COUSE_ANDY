@@ -3,8 +3,6 @@ import './lit-modal';
 import '../components/profile/github-profile';
 
 class LitButtonModal extends LitElement {
-
-
   constructor() {
     super();
     this.list = [];
@@ -33,10 +31,9 @@ class LitButtonModal extends LitElement {
     }
     if (ghprofile) {
       ghprofile.validated = false;
-      ghprofile.shadowRoot.querySelector('#username').value = "";
+      ghprofile.shadowRoot.querySelector('#username').value = '';
     }
   }
-
 
   render() {
     return html`

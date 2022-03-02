@@ -12,11 +12,9 @@ class ModalView extends LitElement {
     return html`
       <common-header></common-header>
       <section class="container">
-        <lit-button-modal>
-          Abrir Modal
-        </lit-button-modal>
+        <lit-button-modal> Abrir Modal </lit-button-modal>
       </section>
-    `; 
+    `;
   }
 }
 
