@@ -9,6 +9,7 @@ import './views/works-view';
 import './views/searcher-view';
 import './views/storybook-view';
 import './views/github-profile-view';
+import './views/modal-view';
 import './works';
 
 export const routing = (outlet) => {
@@ -22,6 +23,7 @@ export const routing = (outlet) => {
     { path: '/searcher', component: 'searcher-view' },
     { path: '/storybook', component: 'storybook-view' },
     { path: '/github-profile', component: 'github-profile-view' },
+    { path: '/modal', component: 'modal-view' },
     { path: '(.*)', component: 'not-found-view' },
   ];
 

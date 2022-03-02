@@ -22,7 +22,7 @@ const { output, ...config } = rollupConfig({
       historyApiFallback: true
     }),
     liveReload({
-      watch: folders.build,
+      watch: folders.src,
       delay: 500
     })
   ]
