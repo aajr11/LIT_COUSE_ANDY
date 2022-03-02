@@ -1,10 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
 
 class LitModal extends LitElement {
-  static get properties() {
-    return {
-    };
-  }
 
   static get styles(){
     return css`

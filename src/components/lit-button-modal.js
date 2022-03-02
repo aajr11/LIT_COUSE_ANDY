@@ -1,12 +1,9 @@
 import { LitElement, html } from 'lit-element';
 import './lit-modal';
-import '../components/profile/github-profile'
+import '../components/profile/github-profile';
 
 class LitButtonModal extends LitElement {
-  static get properties() {
-    return {
-    };
-  }
+
 
   constructor() {
     super();
@@ -24,23 +21,20 @@ class LitButtonModal extends LitElement {
 
   abrirModal() {
     this.limpiarModal();
-    const modal = this.shadowRoot.querySelector('lit-modal').shadowRoot.querySelector(".modal");
+    const modal = this.shadowRoot.querySelector('lit-modal').shadowRoot.querySelector('.modal');
     modal.classList.add('open');
   }
 
   limpiarModal() {
-    const ghprofile = this.shadowRoot.querySelector('github-profile')
+    const ghprofile = this.shadowRoot.querySelector('github-profile');
     const profile = ghprofile.shadowRoot.querySelector('profile-component');
     if (profile) {
       profile.style.display = 'none';
     }
     if (ghprofile) {
       ghprofile.validated = false;
-      ghprofile.shadowRoot.querySelector("#username").value = "";
+      ghprofile.shadowRoot.querySelector('#username').value = "";
     }
-
-
-
   }
 
 
@@ -51,7 +45,6 @@ class LitButtonModal extends LitElement {
           <slot></slot>
         </button>
       </div>
-      
       <lit-modal>
         <github-profile></github-profile>
       </lit-modal>
