@@ -125,6 +125,16 @@ class GithubProfile extends LitElement {
     this.showSpinner = state;
   }
 
+  limpiarModal() {
+    const profile = this.shadowRoot.querySelector('profile-component');
+    if (profile) {
+      profile.style.display = 'none';
+    }
+    this.validated = false;
+    this.shadowRoot.querySelector('#username').value = '';
+
+  }
+
   render() {
     return html`
       <form onsubmit="return false">
@@ -135,8 +145,8 @@ class GithubProfile extends LitElement {
       </form>
       ${this.message !== '' ? html`<div class="alert-msg">${this.message}</div>` : nothing}
       ${this.data !== {}
-        ? html`<profile-component style="text-align: -webkit-center;" .data="${this.data}"></profile-component>`
-        : nothing}
+      ? html`<profile-component style="text-align: -webkit-center;" .data="${this.data}"></profile-component>`
+      : nothing}
       ${this.showSpinner ? html`<div class="centered spinner">${spinner}</div>` : nothing}
     `;
   }
